@@ -14,9 +14,9 @@ router.post('/', async (req, res, next) => {
 
   try {
     const data = await Submissions.add(submission)
-    res.send(`Your submission was recorded!. id = ${data.id}, submitted_at = ${data.submitted_at.toISOString()}\n`)
+    res.send(`✅ Your submission was recorded!. id = ${data.id}, submitted_at = ${data.submitted_at.toISOString()}\n`)
   } catch (err) {
-    next(err)
+    res.status(500).send('❌ There was an error recording your submission!. Make sure that you do not have any spelling mistakes and try again.')
   }
 });
 
